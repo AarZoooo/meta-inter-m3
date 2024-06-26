@@ -7,7 +7,7 @@ contract MyToken is ERC20 {
     string _name = "Shell";
     string _abv = "SHL";
     address private owner;
-
+        
 
     constructor(uint initialSupply) ERC20(_name, _abv) {
 
@@ -28,5 +28,11 @@ contract MyToken is ERC20 {
 
     function burn(uint256 amount) public {
         _burn(msg.sender, amount);
+    }
+
+    function transfer(address to, uint256 amount) public override returns (bool) {
+        _transfer(msg.sender, to, amount);
+
+        return true;
     }
 }
